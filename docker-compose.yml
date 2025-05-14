@@ -1,0 +1,18 @@
+services:
+  dbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: dbeaver
+    ports:
+      - "8978:8978"   # Exposes DBeaver on http://localhost:8080
+    environment:
+      - CB_SERVER_NAME=DBeaver
+      - CB_SERVER_PORT=8978
+      - CB_ADMIN_NAME=admin    # Default admin user
+      - CB_ADMIN_PASSWORD=admin # Default admin password
+    networks:
+      - c8_rainbow
+    restart: always
+
+networks:
+  c8_rainbow:
+    external: true
